@@ -1,3 +1,4 @@
+# creating a tree
 class Tree
   attr_accessor :payload, :children
   def initialize(payload, children = [])
