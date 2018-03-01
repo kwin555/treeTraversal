@@ -10,6 +10,9 @@ class MyQueue
   def dequeue
     @queue.shift
   end
+  def size
+    @queue.size
+  end
 end
 
 

@@ -16,17 +16,36 @@ class Tree
     nil
   end
 
-  def breath_first_search(node, search_value)
-    return node if payload == search_value
+  def breadth_first_search(node, search_value)
+    return node if node.payload == search_value
     queue = MyQueue.new
-    children.each do |child|
-      return child if child.payload == search_value
-      queue.enqueue(child)
+    queue.enqueue(node)
+    while(queue.size != 0)
+      current_node = queue.dequeue
+      # puts current_node.payload.inspect
+      # puts '-------'
+      return current_node if current_node.payload == search_value
+      current_node.children.each do |child|
+        queue.enqueue(child)
+      end
     end
-    current_node = queue.dequeue
-    return current_node.breath_first_search(node, search_value) \
-    unless current_node.nil?
   end
+
+    # while !queue.empty?
+    #   current_node = queue.dequeue
+    #   puts current_node.payload
+    #   current_node.children.each do |child|
+    #     queue.push(child)
+    #   end
+    # end
+    # children.each do |child|
+    #   queue.enqueue(child)
+    #   return child if child.payload == search_value
+    # end
+    # current_node = queue.dequeue
+    # return current_node.breadth_first_search(node, search_value) \
+    # unless current_node.nil?
+
 end
 #
 # tree = Tree.new(5)
@@ -42,5 +61,4 @@ shallow_fifth_node = Tree.new(5, [ninth_node])
 
 # The "Trunk" of the tree
 trunk = Tree.new(2, [seventh_node, shallow_fifth_node])
-
-puts trunk.depth_first_search(trunk, 11).inspect
+puts trunk.breadth_first_search(trunk, 4).inspect
