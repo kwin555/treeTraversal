@@ -22,8 +22,8 @@ class Tree
     queue.enqueue(node)
     while(queue.size != 0)
       current_node = queue.dequeue
-      # puts current_node.payload.inspect
-      # puts '-------'
+       # puts current_node.payload.inspect
+       # puts '-------'
       return current_node if current_node.payload == search_value
       current_node.children.each do |child|
         queue.enqueue(child)

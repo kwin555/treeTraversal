@@ -105,11 +105,11 @@ RSpec.describe Tree, type: :model do
         end
         context 'when the search value is deep right' do
           it 'should return the node' do
-            searched_value = Tree.new(11)
-            left_tree = Tree.new(7, [Tree.new(6, [Tree.new(5), searched_value])])
-            right_tree = Tree.new(5, [Tree.new(Tree.new(9), [Tree.new(4)])])
+            searched_value = Tree.new(9)
+            left_tree = Tree.new(7, [Tree.new(6, [Tree.new(5), Tree.new(11)])])
+            right_tree = Tree.new(5, [searched_value, [Tree.new(4)]])
             tree = Tree.new(2, [left_tree, right_tree])
-            expect(tree.breadth_first_search(tree, 11)).to eq searched_value
+            expect(tree.breadth_first_search(tree, 9)).to eq searched_value
           end
         end
       end
