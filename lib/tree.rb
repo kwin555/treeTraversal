@@ -20,7 +20,7 @@ class Tree
     return node if node.payload == search_value
     queue = MyQueue.new
     queue.enqueue(node)
-    while(queue.size != 0)
+    until queue.empty?
       current_node = queue.dequeue
       return current_node if current_node.payload == search_value
       current_node.children.each do |child|
@@ -29,4 +29,3 @@ class Tree
     end
   end
 end
-

@@ -10,8 +10,8 @@ class MyQueue
   def dequeue
     @queue.shift
   end
-  def size
-    @queue.size
+  def empty?
+    @queue.size == 0
   end
 end
 
